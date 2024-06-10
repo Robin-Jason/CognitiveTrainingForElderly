@@ -1,0 +1,25 @@
+server:
+  port: 28080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/MCIUser
+    username: root
+    password: LuvuubyRK*Jason1258
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+jwt:
+  secret: LcNLZUJa0sgOd7Af54hGPn/uHwDOw240B0eAochWrUNQKh1e2OYN2+J+8AUpScnbyE0+G9dz9liBaOKP4SBTMTAqw7yn4GaNiTEIpKCqySdlioqeTEacR2QRBs1oSC7+ZuVtKdzQv8iP6XXyJgy0uNKHfvbwZOLVoyDWdEYb/s28wv04W+/rxMQZi+4YFSeblAzA8U05GjO3BkVecnReLF/oDPzpM/R4PROd4POAq9ZWaeVvHA5qKjx4wY/RNy2syYRovYagDeIgKK1tDXpRmixWxOdC9dECC6yYntN9RI9oBRJtKlR+MF/uZPMLHuKUWFxRRrPmKe9cpCFb57uxkw==
+  access_token:
+    expiration: 3600 # in seconds
+  refresh_token:
+    expiration: 604800 # in seconds
+
+# 蓝心大模型
+api:
+  bluelm:
+    app-id: 3039641945
+    secret: BxPltgnmIBWjkXGY
