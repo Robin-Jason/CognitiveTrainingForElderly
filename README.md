@@ -64,9 +64,9 @@
    
 
    ```
-   docker run -it --rm --name ssadmin-maven \
-       -v ssadmin-maven-repo:/root/.m2 \
+   docker run -it --rm --name CognitiveTraining-maven \
+       -v CognitiveTraining-maven-repo:/root/.m2 \
        -v "$PWD/src/springboot-server":/usr/src/mymaven \
        -w /usr/src/mymaven \
-       maven:3.8.4-jdk-8 mvn clean install package -e -Dmaven.test.skip=true
+       maven:3.8.4-jdk-11 mvn clean install package -e -Dmaven.test.skip=true
    ```
