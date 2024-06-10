@@ -24,7 +24,7 @@
    创建一个存放`Maven仓库`的卷,使得Maven的依赖被缓存，可加快构建速度。
 
    ```
-   docker volume create --name ssadmin-maven-repo
+   docker volume create --name CognitiveTraining-maven-repo
    ```
 
    
