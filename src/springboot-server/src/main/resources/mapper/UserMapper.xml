@@ -9,7 +9,7 @@
     </select>
 
     <insert id="insertUser">
-        INSERT INTO users (username, password_md5, email, created_at)
+        INSERT INTO users (username, password, email, created_at)
         VALUES (#{user.username}, #{user.password}, #{user.email}, NOW())
     </insert>
 </mapper>
