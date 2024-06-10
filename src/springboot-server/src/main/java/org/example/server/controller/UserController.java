@@ -35,34 +35,33 @@ public class UserController {
 
     // 用户登录验证
     @PostMapping("/login")
-    public CommonResult<?> login(@RequestBody Map<String, String> loginData) {
-        String username = loginData.get("username");
-        String password = loginData.get("password");
+public CommonResult<?> login(@RequestBody Map<String, String> loginData) {
+    String username = loginData.get("username");
+    String password = loginData.get("password");
 
-        // 增加日志输出
-        if (userService == null) {
-            return CommonResult.error(500, "userService 未注入");
-        }
-        if (jwtTokenUtil == null) {
-            return CommonResult.error(500, "jwtTokenUtil 未注入");
-        }
+    if (username == null || password == null) {
+        return CommonResult.error(400, "用户名或密码不能为空");
+    }
 
-        // 获取用户信息
-        User user = userService.findUserByName(username);
-        if (user != null) {
-            // 验证密码
-            String encryptedPassword = MD5Util.encrypt(password);
-            if (user.getPassword().equals(encryptedPassword)) {
-                // 生成访问令牌和刷新令牌
-                String accessToken = jwtTokenUtil.generateAccessToken(username);
-                String refreshToken = jwtTokenUtil.generateRefreshToken(username);
-                TokenResponse token_resp = new TokenResponse(accessToken, refreshToken);
-
-                return CommonResult.success(token_resp);
-            }
-        }
+    // 获取用户信息
+    User user = userService.findUserByName(username);
+    if (user == null) {
         return CommonResult.error(401, "用户名或密码错误");
     }
+
+    // 验证密码
+    String encryptedPassword = MD5Util.encrypt(password);
+    if (user.getPassword() == null || !user.getPassword().equals(encryptedPassword)) {
+        return CommonResult.error(401, "用户名或密码错误");
+    }
+
+    // 生成访问令牌和刷新令牌
+    String accessToken = jwtTokenUtil.generateAccessToken(username);
+    String refreshToken = jwtTokenUtil.generateRefreshToken(username);
+    TokenResponse token_resp = new TokenResponse(accessToken, refreshToken);
+
+    return CommonResult.success(token_resp);
+}
 
     // 获取用户信息
     @GetMapping("/getInfo")
