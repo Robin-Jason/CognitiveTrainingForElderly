@@ -14,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -37,6 +38,14 @@ public class UserController {
     public CommonResult<?> login(@RequestBody Map<String, String> loginData) {
         String username = loginData.get("username");
         String password = loginData.get("password");
+
+        // 增加日志输出
+        if (userService == null) {
+            return CommonResult.error(500, "userService 未注入");
+        }
+        if (jwtTokenUtil == null) {
+            return CommonResult.error(500, "jwtTokenUtil 未注入");
+        }
 
         // 获取用户信息
         User user = userService.findUserByName(username);
