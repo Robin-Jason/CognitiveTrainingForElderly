@@ -11,8 +11,8 @@
    
 
    ```
-   git clone https://github.com/SolitudeRK-Jason/TodoList.git
-   cd TodoList
+   git clone https://github.com/SolitudeRK-Jason/CognitiveTrainingForElderly.git
+   cd CognitiveTrainingForElderly
    ```
 
    
