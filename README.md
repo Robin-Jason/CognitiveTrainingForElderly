@@ -11,7 +11,7 @@
    
 
    ```
-   git clone https://github.com/SolitudeRK-Jason/CognitiveTrainingForElderly.git
+   git clone https://github.com/Robin-Jason/CognitiveTrainingForElderly.git
    cd CognitiveTrainingForElderly
    ```
 
